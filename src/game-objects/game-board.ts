@@ -20,7 +20,6 @@ export class GameBoard
         let height = this.columns * BRICK_SIZE;
 
         this.x = x - (width/2);
-        this.y = y - (height/2);
 
         this.initGrid();
     }
