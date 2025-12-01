@@ -1,24 +1,38 @@
 import { BRICK_SIZE } from "../constants";
-import type { Point } from "./point";
+import { Point } from "./point";
 
 class Brick 
 {
     // ctx: CanvasRenderingContext2D;
     size: number = BRICK_SIZE;
+    highlightColor: string | null = null;
 
     constructor (
     private readonly ctx: CanvasRenderingContext2D, 
     public x: number, 
     public y: number,
-    public readonly color: string = "blue"
+    public readonly color: string = "blue",
+
     ) {}
 
     public draw() : void
     {
         const {ctx, x, y, size, color} = this;
 
-        ctx.fillStyle = color;
+        ctx.save();
+
+        ctx.fillStyle = this.highlightColor ?? color;
+        ctx.globalAlpha = this.highlightColor ? 0.5 : 1;
         ctx.fillRect(x, y, size, size);
+
+        this.drawBevels();
+
+        ctx.restore();
+    }
+
+    private drawBevels()
+    {
+        const {ctx, x, y, size, color} = this;
 
         let borderSize  = size * .2;
 
@@ -71,6 +85,17 @@ class Brick
         return isInPath;
     }
 
+    public center() : Point
+    {
+        const {x, y, size} = this;
+        return new Point(x + size/2, y + size/2);
+
+    }
+
+    public isOtherOver(other: Brick) : boolean
+    {
+        return this.isPointOver(other.center());
+    }
 }
 
 export {Brick}

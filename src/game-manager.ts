@@ -55,6 +55,7 @@ export class GameManager
         {
             document.body.style.cursor = "none";
             this.selectedSlot.movePatternSlot(this.mousePosition);
+            this.board.highlightBrickSet(this.selectedSlot.brickSet);
         }
 
         if (!this.selectedSlot && slots.some(s => s.isPointOver(this.mousePosition)))
