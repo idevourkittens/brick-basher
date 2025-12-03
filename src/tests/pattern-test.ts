@@ -20,12 +20,6 @@ let numberOfRows = Math.ceil(patternSets.length / numberOfGridsPerRow);
 canvas.width = width;
 canvas.height = numberOfRows * gridPositions * BRICK_SIZE + BRICK_SIZE;
 
-console.log(
-	numberOfGridsPerRow,
-	numberOfRows,
-	numberOfGridsPerRow * gridPositions
-);
-
 let x = BRICK_SIZE;
 let y = BRICK_SIZE;
 

@@ -1,43 +1,35 @@
 import { patternSets } from "../pattern-sets";
 import { BrickSet } from "./brick-set";
-import type { Point } from "./point";
+import { Point } from "./point";
 
-export class PatternSlot
-{
-    public brickSet!: BrickSet;
+export class PatternSlot {
+	public brickSet: BrickSet | null = null;
 
-    constructor
-    (
-        private readonly ctx: CanvasRenderingContext2D,
-        public point: Point,
-        
-    ) 
-    {
-        this.generateSet();
-    }
+	constructor(
+		private readonly ctx: CanvasRenderingContext2D,
+		private readonly point: Point
+	) {
+		this.generateSet();
+	}
 
-    public generateSet()
-    {
-        let {ctx, point} = this;
+	public generateSet() {
+		let { ctx, point } = this;
 
-        const idx = Math.floor(Math.random() * patternSets.length);
-        const pattern = patternSets[idx];
+		const idx = Math.floor(Math.random() * patternSets.length);
+		const pattern = patternSets[idx];
 
-        this.brickSet = new BrickSet(ctx, point.x, point.y, pattern);
-    }
+		this.brickSet = new BrickSet(ctx, point.x, point.y, pattern);
+	}
 
-    public isPointOver(point: Point) : boolean
-    {
-        return this.brickSet.isPointOver(point);
-    }
+	public isPointOver(point: Point): boolean {
+		return this.brickSet?.isPointOver(point) ?? false;
+	}
 
-    public movePatternSlot(point: Point) : void
-    {
-        this.brickSet.move(point);
-    }
+	public move(point: Point): void {
+		this.brickSet?.move(point);
+	}
 
-    public resetPosition() : void
-    {
-        this.brickSet.move(this.point);
-    }
+	public resetPosition(): void {
+		this.brickSet?.move(this.point);
+	}
 }
