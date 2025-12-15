@@ -20,7 +20,6 @@ let numberOfRows = Math.ceil(patternSets.length / numberOfGridsPerRow);
 canvas.width = width;
 canvas.height = numberOfRows * gridPositions * BRICK_SIZE + BRICK_SIZE;
 
-let x = BRICK_SIZE;
 let y = BRICK_SIZE;
 
 // draw empty grids based on the number of rows and columns
@@ -35,7 +34,6 @@ for (let row = 0; row < numberOfRows; row++, y += gridSize) {
 }
 
 // time to draw our patterns, set our x and y back to start
-x = BRICK_SIZE;
 y = BRICK_SIZE;
 
 // set up an index counter for the patternSets array

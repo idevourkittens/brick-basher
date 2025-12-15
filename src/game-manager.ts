@@ -48,7 +48,7 @@ export class GameManager {
 		this.selectedSlot?.brickSet?.draw();
 	}
 
-	public update(elapsedTime: number): void {
+	public update(): void {
 		document.body.style.cursor = "default";
 
 		if (this.isGameOver) {

@@ -5,13 +5,13 @@ import { GameManager } from "./game-manager";
 initCanvas();
 
 let gm = new GameManager(ctx, canvas);
-let lastTimestamp = 0;
+// let lastTimestamp = 0;
 
-function gameLoop(timestamp: number) {
-	let elapsedTime = timestamp - lastTimestamp;
-	lastTimestamp = timestamp;
+function gameLoop() {
+	// let elapsedTime = timestamp - lastTimestamp;
+	// lastTimestamp = timestamp;
 
-	gm.update(elapsedTime);
+	gm.update();
 	gm.draw();
 
 	// make sure this stays as the last thing
