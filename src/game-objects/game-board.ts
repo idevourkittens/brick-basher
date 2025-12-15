@@ -6,8 +6,8 @@ import { BrickScore, ScoreEvent } from "../game-events";
 
 export class GameBoard {
 	color: string = BOARD_COLOR;
-	rows: number = 8;
-	cols: number = 8;
+	rows: number = 12;
+	cols: number = 12;
 	private readonly x: number;
 	public cells: Array<Brick> = [];
 	public slots: Array<BoardSlot> = [];

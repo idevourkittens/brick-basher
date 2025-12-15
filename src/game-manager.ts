@@ -1,4 +1,5 @@
 import { BRICK_SIZE } from "./constants";
+import { GameOverEvent } from "./game-events";
 import { GameBoard } from "./game-objects/game-board";
 import { PatternSlot } from "./game-objects/pattern-slot";
 import { Point } from "./game-objects/point";
@@ -85,9 +86,11 @@ export class GameManager {
 	}
 
 	private initSlots() {
-		const y = this.boardPadding.top + BRICK_SIZE * 8 + this.boardPadding.bottom;
+		//set 12 to 8 if wanting to go back to normal board
+		const y = this.boardPadding.top + BRICK_SIZE * 12 + this.boardPadding.bottom;
 		
-		let pointBeta = new Point(this.canvas.width / 1.8 - BRICK_SIZE * 2, y);
+		//set 1.9 to 1.8 if  wanting to go back to normal board
+		let pointBeta = new Point(this.canvas.width / 1.9 - BRICK_SIZE * 2, y);
 		let pointAlpha = new Point(pointBeta.x - BRICK_SIZE * 5, y);
 		let pointCharlie = new Point(pointBeta.x + BRICK_SIZE * 5, y);
 
@@ -160,5 +163,12 @@ export class GameManager {
 		}
 
 		console.log("Game over?", this.isGameOver);
+
+		if (this.isGameOver)
+		{
+			let event = new GameOverEvent();
+			window.dispatchEvent(event);
+			console.log("Game is over");
+		}
 	}
 }
