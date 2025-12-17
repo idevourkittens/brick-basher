@@ -7,7 +7,7 @@ initCanvas();
 let gm = new GameManager(ctx, canvas);
 // let lastTimestamp = 0;
 
-function gameLoop() {
+function gameLoop(                 ) {
 	// let elapsedTime = timestamp - lastTimestamp;
 	// lastTimestamp = timestamp;
 
